@@ -8,7 +8,9 @@ const btnStand = document.getElementById("stand");
 const deckCount = 6;
 const shuffleUrl = "https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count="+deckCount;
 var request = new XMLHttpRequest()
-
+let dealerDeck = [];
+let playerDeck = [];
+let deckId = "";
 
 //Functions
 async function getData(){
@@ -16,9 +18,14 @@ async function getData(){
 }
 
 function reset(){
-let dealerDeck = [];
-let playerDeck = [];
+    dealerDeck = [];
+    playerDeck = [];
+    fetch("https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count="+deckCount)
+    .then(deck => deck.json())
+    .then(deck => {
+        deckId = deck.deck_id
 
+    })
 
 
 }
@@ -40,20 +47,16 @@ async function dealCards(deckId,amount){
 
 function Hit(){
     alert('You recieved a hit')
-    const newCard = await dealCards(deckId,1)
-    console.log(newCard);
-    myCards.push(newCard)
-    console.log(myCards);
+    reset() ///reset everyting
 }
 
 function Deal(){
-    reset() ///reset everyting
+    
     fetch("https://www.deckofcardsapi.com/api/deck/" + deckId + "/draw/?count=4")
-    .then(dealDeck => dealDeck.json())
-    .then(dealDeck => {
-        dealerDeck.push(dealDeck[0],dealDeck[2]);
-        playerDeck.push(dealDeck.cards[1],dealDeck.cards[3])
-        var deckId = await getData()
+    .then(dealtDeck => dealtDeck.json())
+    .then(dealtDeck => {
+        dealerDeck.push(dealtDeck[0],dealtDeck[2]);
+        playerDeck.push(dealtDeck.cards[1],dealtDeck.cards[3])
         console.log(playerDeck)
         alert('Cards Dealt');
         
