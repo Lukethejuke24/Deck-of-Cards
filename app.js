@@ -25,10 +25,10 @@ async function getData(){
     }) 
 }
 
-function dealCards(deckId){
-    const getCardsUrl = "https://www.deckofcardsapi.com/api/deck/" + deckId + "/draw/?count=2"
+async function dealCards(deckId,amount){
+    const getCardsUrl = "https://www.deckofcardsapi.com/api/deck/" + deckId + "/draw/?count=" + amount
     const myRequest = new Request(getCardsUrl);
-    return fetch(myRequest)
+    fetch("https://www.deckofcardsapi.com/api/deck/" + deckId + "/draw/?count=4")
     .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${ response.status }`);
@@ -42,15 +42,25 @@ function dealCards(deckId){
 
 function Hit(){
     alert('You recieved a hit')
-}
-
-async function Deal(){
-    //alert('Cards Dealt')
-    const deckId = await getData()
-    console.log(deckId)
-    const myCards = await dealCards(deckId)
+    const newCard = await dealCards(deckId,1)
+    console.log(newCard);
+    myCards.push(newCard)
     console.log(myCards);
 }
+
+function Deal(){
+    ///reset everyting
+    fetch("https://www.deckofcardsapi.com/api/deck/" + deckId + "/draw/?count=4")
+    .then()
+    var deckId = await getData()
+    console.log(deckId)
+
+    const myCards = await dealCards(deckId,2)
+    console.log(myCards);
+    alert('Cards Dealt')
+    
+}
+
 function Stand(){
     alert('You chose to stand')
 }
