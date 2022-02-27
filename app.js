@@ -12,17 +12,12 @@ var request = new XMLHttpRequest()
 
 //Functions
 async function getData(){
-    const myRequest = new Request(shuffleUrl);
-    return fetch(myRequest)
-    .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${ response.status }`);
-        }
-        return response.json()
-    })
-    .then(data => {
-    return data.deck_id
-    }) 
+
+}
+
+function reset(){
+
+
 }
 
 async function dealCards(deckId,amount){
@@ -49,17 +44,22 @@ function Hit(){
 }
 
 function Deal(){
-    ///reset everyting
+    reset()///reset everyting
     fetch("https://www.deckofcardsapi.com/api/deck/" + deckId + "/draw/?count=4")
-    .then()
-    var deckId = await getData()
-    console.log(deckId)
+    .then(dealDeck => dealDeck.json())
+    .then(dealDeck => {
+        
+        var deckId = await getData()
+        console.log(deckId)
 
-    const myCards = await dealCards(deckId,2)
-    console.log(myCards);
-    alert('Cards Dealt')
-    
-}
+        const myCards = await dealCards(deckId,2)
+        console.log(myCards);
+        alert('Cards Dealt');
+        
+    })
+       
+}   
+
 
 function Stand(){
     alert('You chose to stand')
