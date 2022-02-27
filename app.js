@@ -16,6 +16,9 @@ async function getData(){
 }
 
 function reset(){
+let dealerDeck = [];
+let playerDeck = [];
+
 
 
 }
@@ -44,16 +47,14 @@ function Hit(){
 }
 
 function Deal(){
-    reset()///reset everyting
+    reset() ///reset everyting
     fetch("https://www.deckofcardsapi.com/api/deck/" + deckId + "/draw/?count=4")
     .then(dealDeck => dealDeck.json())
     .then(dealDeck => {
-        
+        dealerDeck.push(dealDeck[0],dealDeck[2]);
+        playerDeck.push(dealDeck.cards[1],dealDeck.cards[3])
         var deckId = await getData()
-        console.log(deckId)
-
-        const myCards = await dealCards(deckId,2)
-        console.log(myCards);
+        console.log(playerDeck)
         alert('Cards Dealt');
         
     })
