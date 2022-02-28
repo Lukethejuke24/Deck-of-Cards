@@ -6,17 +6,31 @@
     </head>    
     
     <body>
+        <h1 id="Title">LukeTheJuke's BlackJack Table</h1>
+        
         <div id="buttons" class="center">
-        <button id="dealCards" class="button" style="width: 100px;">Deal cards</button>
-        <button id="stand" class="button" style="width: 100px;">Stand</button>
-        <button id="hit" class="button" style="width: 100px;">Hit</button>
+            <button id="dealCards" class="button" style="width: 100px;">Deal cards</button>
+            <button id="stand" class="button" style="width: 100px;">Stand</button>
+            <button id="hit" class="button" style="width: 100px;">Hit</button>
         </div>
-  
-        <ul id="cards" display: inline-block>
-            <li><img src="http://deckofcardsapi.com/static/img/5D.png"></li>
-            <li><img src="http://deckofcardsapi.com/static/img/KH.png"></li>
-        </ul>
-        <span id="result"></span>
+
+        <div id="table">
+            <div id="dealer">    
+                <h2>Dealer</h2>
+                <ul id="dealerCards" class="cards" display: inline-block>
+                    <li><img src="http://deckofcardsapi.com/static/img/5D.png"></li>
+                    <li><img src="http://deckofcardsapi.com/static/img/KH.png"></li>
+                </ul>
+            </div>
+
+            <div id="player">
+                <h2>Player</h2>
+                <ul id="playerCards" class="cards">
+                    <li><img src="http://deckofcardsapi.com/static/img/5D.png"></li>
+                    <li><img src="http://deckofcardsapi.com/static/img/KH.png"></li>
+                </ul>
+            </div>        
+        </div>
 
         <script src="app.js"  ></script>
         <noscript>You need to enable JavaScript to view the full site.</noscript>
