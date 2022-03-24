@@ -7,16 +7,21 @@
     
     <body>
         <h1 id="Title">LukeTheJuke's BlackJack Table</h1>
-        
+        <div id="startGame">
+            
+        </div>
         <div id="buttons" class="center">
+            <button id="startButton" class="button">Start Game</button><br><br>
+            <button id="reset" class="button" style="width: 100px;">Reset</button>
             <button id="dealCards" class="button" style="width: 100px;">Deal cards</button>
-            <button id="stand" class="button" style="width: 100px;">Stand</button>
             <button id="hit" class="button" style="width: 100px;">Hit</button>
+            <button id="stand" class="button" style="width: 100px;">Stand</button>
+            
         </div>
 
         <div id="table">
             <div id="dealer">    
-                <h2>Dealer</h2>
+                <h2>Dealer: <span id="dealersScore"></span></h2>
                 <ul id="dealerCards" class="cards" display: inline-block>
                     <li><img src="http://deckofcardsapi.com/static/img/5D.png"></li>
                     <li><img src="http://deckofcardsapi.com/static/img/KH.png"></li>
@@ -24,7 +29,7 @@
             </div>
 
             <div id="player">
-                <h2>Player</h2>
+                <h2>Player: <span id="playersScore"></span></h2>
                 <ul id="playerCards" class="cards">
                     <li><img src="http://deckofcardsapi.com/static/img/5D.png"></li>
                     <li><img src="http://deckofcardsapi.com/static/img/KH.png"></li>
